@@ -36,9 +36,13 @@ const UserList = ({ count, users, refetchUsers }) => <div>
 </div>
 
 const Users = () => <Query query={ROOT_QUERY}>
-    {(result) => result.loading ? 
-        <p>Loading users ...</p> : 
-        <UserList count={result.data.totalUsers} users={result.data.allUsers} refetchUsers={result.refetch}/>
+    {
+        (result) => {
+            console.log('USER', result)
+            return result.loading ? 
+            <p>Loading users ...</p> : 
+            <UserList count={result.data.totalUsers} users={result.data.allUsers} refetchUsers={result.refetch}/>
+        }
     }
 </Query>
 
